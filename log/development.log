@@ -1,0 +1,718 @@
+Started GET "/articles" for 127.0.0.1 at 2023-05-23 18:05:19 +0530
+  [1m[35m (5.4ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (3.4ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+        bin/rails db:migrate RAILS_ENV=development
+
+You have 1 pending migration:
+
+20230523123129_create_articles.rb
+
+
+):
+  
+activerecord (7.0.4.3) lib/active_record/migration.rb:627:in `check_pending!'
+activerecord (7.0.4.3) lib/active_record/migration.rb:592:in `block (2 levels) in call'
+activesupport (7.0.4.3) lib/active_support/file_update_checker.rb:83:in `execute'
+activerecord (7.0.4.3) lib/active_record/migration.rb:597:in `block in call'
+activerecord (7.0.4.3) lib/active_record/migration.rb:589:in `synchronize'
+activerecord (7.0.4.3) lib/active_record/migration.rb:589:in `call'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (7.0.4.3) lib/active_support/callbacks.rb:99:in `run_callbacks'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/debug_exceptions.rb:28:in `call'
+web-console (4.2.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/show_exceptions.rb:26:in `call'
+railties (7.0.4.3) lib/rails/rack/logger.rb:40:in `call_app'
+railties (7.0.4.3) lib/rails/rack/logger.rb:25:in `block in call'
+activesupport (7.0.4.3) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (7.0.4.3) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (7.0.4.3) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (7.0.4.3) lib/rails/rack/logger.rb:25:in `call'
+sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/remote_ip.rb:93:in `call'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.7) lib/rack/method_override.rb:24:in `call'
+rack (2.2.7) lib/rack/runtime.rb:22:in `call'
+activesupport (7.0.4.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/server_timing.rb:61:in `block in call'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/server_timing.rb:26:in `collect_events'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/server_timing.rb:60:in `call'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/static.rb:23:in `call'
+rack (2.2.7) lib/rack/sendfile.rb:110:in `call'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/host_authorization.rb:137:in `call'
+railties (7.0.4.3) lib/rails/engine.rb:530:in `call'
+puma (5.6.5) lib/puma/configuration.rb:252:in `call'
+puma (5.6.5) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.6.5) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.6.5) lib/puma/request.rb:76:in `handle_request'
+puma (5.6.5) lib/puma/server.rb:443:in `process_client'
+puma (5.6.5) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateArticles (20230523123129)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "articles" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "content" json, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20230523123129"]]
+  [1m[36mTRANSACTION (2.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2023-05-23 12:35:46.707512"], ["updated_at", "2023-05-23 12:35:46.707512"]]
+  [1m[36mTRANSACTION (2.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/articles" for 127.0.0.1 at 2023-05-23 18:05:55 +0530
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ArticlesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (0.1ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/articles/index.html.erb:6
+  Rendered articles/index.html.erb within layouts/application (Duration: 3.3ms | Allocations: 1767)
+  Rendered layout layouts/application.html.erb (Duration: 310.4ms | Allocations: 108323)
+Completed 200 OK in 317ms (Views: 311.9ms | ActiveRecord: 0.1ms | Allocations: 115540)
+
+
+Started GET "/articles/new" for 127.0.0.1 at 2023-05-23 18:05:57 +0530
+Processing by ArticlesController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (Duration: 8.0ms | Allocations: 5617)
+  Rendered articles/new.html.erb within layouts/application (Duration: 8.9ms | Allocations: 6001)
+  Rendered layout layouts/application.html.erb (Duration: 11.1ms | Allocations: 8446)
+Completed 200 OK in 27ms (Views: 11.6ms | ActiveRecord: 1.0ms | Allocations: 24279)
+
+
+Started GET "/articles/new" for 127.0.0.1 at 2023-05-23 18:06:04 +0530
+Processing by ArticlesController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (Duration: 3.3ms | Allocations: 828)
+  Rendered articles/new.html.erb within layouts/application (Duration: 4.0ms | Allocations: 917)
+  Rendered layout layouts/application.html.erb (Duration: 12.0ms | Allocations: 3245)
+Completed 200 OK in 14ms (Views: 13.4ms | ActiveRecord: 0.0ms | Allocations: 3607)
+
+
+Started POST "/articles" for 127.0.0.1 at 2023-05-23 18:06:06 +0530
+Processing by ArticlesController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "article"=>{"content"=>""}, "commit"=>"Create Article"}
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/articles_controller.rb:27:in `block in create'
+  [1m[36mArticle Create (0.2ms)[0m  [1m[32mINSERT INTO "articles" ("content", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["content", "\"\""], ["created_at", "2023-05-23 12:36:06.013276"], ["updated_at", "2023-05-23 12:36:06.013276"]]
+  ↳ app/controllers/articles_controller.rb:27:in `block in create'
+  [1m[36mTRANSACTION (3.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/articles_controller.rb:27:in `block in create'
+Redirected to http://127.0.0.1:5002/articles/1
+Completed 302 Found in 17ms (ActiveRecord: 3.2ms | Allocations: 3733)
+
+
+Started GET "/articles/1" for 127.0.0.1 at 2023-05-23 18:06:06 +0530
+Processing by ArticlesController#show as TURBO_STREAM
+  Parameters: {"id"=>"1"}
+  [1m[36mArticle Load (0.1ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:63:in `set_article'
+  Rendering layout layouts/application.html.erb
+  Rendering articles/show.html.erb within layouts/application
+  Rendered articles/_article.html.erb (Duration: 0.3ms | Allocations: 239)
+  Rendered articles/show.html.erb within layouts/application (Duration: 2.5ms | Allocations: 1762)
+  Rendered layout layouts/application.html.erb (Duration: 4.4ms | Allocations: 4217)
+Completed 200 OK in 8ms (Views: 4.7ms | ActiveRecord: 0.1ms | Allocations: 7311)
+
+
+Started GET "/articles/1/edit" for 127.0.0.1 at 2023-05-23 18:06:08 +0530
+Processing by ArticlesController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mArticle Load (0.1ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:63:in `set_article'
+  Rendering layout layouts/application.html.erb
+  Rendering articles/edit.html.erb within layouts/application
+  Rendered articles/_form.html.erb (Duration: 1.1ms | Allocations: 1005)
+  Rendered articles/edit.html.erb within layouts/application (Duration: 1.6ms | Allocations: 1311)
+  Rendered layout layouts/application.html.erb (Duration: 3.5ms | Allocations: 3631)
+Completed 200 OK in 5ms (Views: 3.8ms | ActiveRecord: 0.1ms | Allocations: 4508)
+
+
+Started GET "/articles/1/edit" for 127.0.0.1 at 2023-05-23 18:06:22 +0530
+Processing by ArticlesController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mArticle Load (0.1ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:63:in `set_article'
+  Rendering layout layouts/application.html.erb
+  Rendering articles/edit.html.erb within layouts/application
+  Rendered articles/_form.html.erb (Duration: 0.9ms | Allocations: 863)
+  Rendered articles/edit.html.erb within layouts/application (Duration: 1.2ms | Allocations: 984)
+  Rendered layout layouts/application.html.erb (Duration: 3.3ms | Allocations: 3303)
+Completed 200 OK in 5ms (Views: 3.8ms | ActiveRecord: 0.1ms | Allocations: 4060)
+
+
+Started GET "/articles/new" for 127.0.0.1 at 2023-05-23 18:06:24 +0530
+Processing by ArticlesController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (Duration: 1.1ms | Allocations: 813)
+  Rendered articles/new.html.erb within layouts/application (Duration: 1.2ms | Allocations: 898)
+  Rendered layout layouts/application.html.erb (Duration: 3.0ms | Allocations: 3224)
+Completed 200 OK in 4ms (Views: 3.4ms | ActiveRecord: 0.0ms | Allocations: 3536)
+
+
+Started GET "/articles" for 127.0.0.1 at 2023-05-23 18:06:25 +0530
+Processing by ArticlesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (0.1ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/articles/index.html.erb:6
+  Rendered articles/_article.html.erb (Duration: 0.0ms | Allocations: 21)
+  Rendered articles/index.html.erb within layouts/application (Duration: 1.1ms | Allocations: 931)
+  Rendered layout layouts/application.html.erb (Duration: 3.0ms | Allocations: 3270)
+Completed 200 OK in 4ms (Views: 3.4ms | ActiveRecord: 0.1ms | Allocations: 3579)
+
+
+Started GET "/articles/new" for 127.0.0.1 at 2023-05-23 18:06:30 +0530
+Processing by ArticlesController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (Duration: 1.3ms | Allocations: 800)
+  Rendered articles/new.html.erb within layouts/application (Duration: 1.5ms | Allocations: 885)
+  Rendered layout layouts/application.html.erb (Duration: 3.6ms | Allocations: 3223)
+Completed 200 OK in 5ms (Views: 4.1ms | ActiveRecord: 0.0ms | Allocations: 3531)
+
+
+Started GET "/articles/new" for 127.0.0.1 at 2023-05-23 18:06:53 +0530
+Processing by ArticlesController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (Duration: 1.1ms | Allocations: 815)
+  Rendered articles/new.html.erb within layouts/application (Duration: 1.3ms | Allocations: 900)
+  Rendered layout layouts/application.html.erb (Duration: 4.0ms | Allocations: 3226)
+Completed 200 OK in 5ms (Views: 4.4ms | ActiveRecord: 0.0ms | Allocations: 3535)
+
+
+Started GET "/articles" for 127.0.0.1 at 2023-05-23 18:06:56 +0530
+Processing by ArticlesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (0.1ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/articles/index.html.erb:6
+  Rendered articles/_article.html.erb (Duration: 0.1ms | Allocations: 21)
+  Rendered articles/index.html.erb within layouts/application (Duration: 1.3ms | Allocations: 905)
+  Rendered layout layouts/application.html.erb (Duration: 3.8ms | Allocations: 3245)
+Completed 200 OK in 5ms (Views: 4.2ms | ActiveRecord: 0.1ms | Allocations: 3552)
+
+
+Started GET "/articles/new" for 127.0.0.1 at 2023-05-23 18:06:57 +0530
+Processing by ArticlesController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (Duration: 0.7ms | Allocations: 793)
+  Rendered articles/new.html.erb within layouts/application (Duration: 0.9ms | Allocations: 878)
+  Rendered layout layouts/application.html.erb (Duration: 2.6ms | Allocations: 3204)
+Completed 200 OK in 3ms (Views: 2.9ms | ActiveRecord: 0.0ms | Allocations: 3512)
+
+
+Started GET "/" for ::1 at 2023-05-23 18:08:06 +0530
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/gammastack/.rvm/gems/ruby-3.0.1/gems/railties-7.0.4.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/gammastack/.rvm/gems/ruby-3.0.1/gems/railties-7.0.4.3/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.7ms | Allocations: 825)
+Completed 200 OK in 5ms (Views: 2.1ms | ActiveRecord: 0.0ms | Allocations: 6633)
+
+
+Started GET "/articles" for ::1 at 2023-05-23 18:08:11 +0530
+Processing by ArticlesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (0.1ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/articles/index.html.erb:6
+  Rendered articles/_article.html.erb (Duration: 0.4ms | Allocations: 260)
+  Rendered articles/index.html.erb within layouts/application (Duration: 12.2ms | Allocations: 17562)
+  Rendered layout layouts/application.html.erb (Duration: 217.2ms | Allocations: 57645)
+Completed 200 OK in 220ms (Views: 218.0ms | ActiveRecord: 0.4ms | Allocations: 59700)
+
+
+Started GET "/articles/new" for ::1 at 2023-05-23 18:08:15 +0530
+Processing by ArticlesController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (Duration: 3.5ms | Allocations: 3509)
+  Rendered articles/new.html.erb within layouts/application (Duration: 4.2ms | Allocations: 3850)
+  Rendered layout layouts/application.html.erb (Duration: 6.5ms | Allocations: 6292)
+Completed 200 OK in 7ms (Views: 6.9ms | ActiveRecord: 0.0ms | Allocations: 6762)
+
+
+Started GET "/articles/new" for ::1 at 2023-05-23 18:08:58 +0530
+Processing by ArticlesController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (Duration: 1.1ms | Allocations: 791)
+  Rendered articles/new.html.erb within layouts/application (Duration: 1.3ms | Allocations: 880)
+  Rendered layout layouts/application.html.erb (Duration: 3.8ms | Allocations: 3208)
+Completed 200 OK in 5ms (Views: 4.3ms | ActiveRecord: 0.0ms | Allocations: 3570)
+
+
+Started GET "/articles/new" for ::1 at 2023-05-23 18:09:18 +0530
+Processing by ArticlesController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (Duration: 3.4ms | Allocations: 753)
+  Rendered articles/new.html.erb within layouts/application (Duration: 4.0ms | Allocations: 838)
+  Rendered layout layouts/application.html.erb (Duration: 9.7ms | Allocations: 3192)
+Completed 200 OK in 12ms (Views: 10.9ms | ActiveRecord: 0.0ms | Allocations: 3500)
+
+
+Started GET "/articles/new" for ::1 at 2023-05-23 18:09:23 +0530
+Processing by ArticlesController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (Duration: 0.8ms | Allocations: 749)
+  Rendered articles/new.html.erb within layouts/application (Duration: 0.9ms | Allocations: 834)
+  Rendered layout layouts/application.html.erb (Duration: 3.0ms | Allocations: 3161)
+Completed 200 OK in 4ms (Views: 3.3ms | ActiveRecord: 0.0ms | Allocations: 3476)
+
+
+Started GET "/articles" for ::1 at 2023-05-23 18:09:24 +0530
+Processing by ArticlesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (0.1ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/articles/index.html.erb:6
+  Rendered articles/_article.html.erb (Duration: 0.1ms | Allocations: 25)
+  Rendered articles/index.html.erb within layouts/application (Duration: 1.2ms | Allocations: 939)
+  Rendered layout layouts/application.html.erb (Duration: 3.1ms | Allocations: 3278)
+Completed 200 OK in 4ms (Views: 3.3ms | ActiveRecord: 0.1ms | Allocations: 3587)
+
+
+Started GET "/articles/new" for ::1 at 2023-05-23 18:09:26 +0530
+Processing by ArticlesController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (Duration: 1.4ms | Allocations: 758)
+  Rendered articles/new.html.erb within layouts/application (Duration: 1.6ms | Allocations: 843)
+  Rendered layout layouts/application.html.erb (Duration: 3.7ms | Allocations: 3169)
+Completed 200 OK in 5ms (Views: 4.2ms | ActiveRecord: 0.0ms | Allocations: 3478)
+
+
+Started GET "/articles/new" for ::1 at 2023-05-23 18:09:32 +0530
+Processing by ArticlesController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (Duration: 0.9ms | Allocations: 755)
+  Rendered articles/new.html.erb within layouts/application (Duration: 1.2ms | Allocations: 840)
+  Rendered layout layouts/application.html.erb (Duration: 3.1ms | Allocations: 3168)
+Completed 200 OK in 4ms (Views: 3.7ms | ActiveRecord: 0.0ms | Allocations: 3476)
+
+
+Started GET "/articles" for ::1 at 2023-05-23 18:09:41 +0530
+Processing by ArticlesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (0.1ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/articles/index.html.erb:6
+  Rendered articles/_article.html.erb (Duration: 0.1ms | Allocations: 21)
+  Rendered articles/index.html.erb within layouts/application (Duration: 1.6ms | Allocations: 845)
+  Rendered layout layouts/application.html.erb (Duration: 3.8ms | Allocations: 3210)
+Completed 200 OK in 5ms (Views: 4.2ms | ActiveRecord: 0.1ms | Allocations: 3515)
+
+
+Started GET "/articles/new" for ::1 at 2023-05-23 18:09:46 +0530
+Processing by ArticlesController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (Duration: 0.8ms | Allocations: 756)
+  Rendered articles/new.html.erb within layouts/application (Duration: 0.9ms | Allocations: 841)
+  Rendered layout layouts/application.html.erb (Duration: 2.7ms | Allocations: 3167)
+Completed 200 OK in 3ms (Views: 3.0ms | ActiveRecord: 0.0ms | Allocations: 3475)
+
+
+Started GET "/articles/new" for ::1 at 2023-05-23 18:10:01 +0530
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ArticlesController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (Duration: 4.9ms | Allocations: 3800)
+  Rendered articles/new.html.erb within layouts/application (Duration: 5.8ms | Allocations: 4554)
+  Rendered layout layouts/application.html.erb (Duration: 27.5ms | Allocations: 25689)
+Completed 200 OK in 38ms (Views: 28.9ms | ActiveRecord: 0.3ms | Allocations: 47750)
+
+
+Started GET "/articles" for ::1 at 2023-05-23 18:10:08 +0530
+Processing by ArticlesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (0.1ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/articles/index.html.erb:6
+  Rendered articles/_article.html.erb (Duration: 0.4ms | Allocations: 244)
+  Rendered articles/index.html.erb within layouts/application (Duration: 2.5ms | Allocations: 2068)
+  Rendered layout layouts/application.html.erb (Duration: 4.3ms | Allocations: 4530)
+Completed 200 OK in 5ms (Views: 4.6ms | ActiveRecord: 0.1ms | Allocations: 5089)
+
+
+Started GET "/articles/new" for ::1 at 2023-05-23 18:10:10 +0530
+Processing by ArticlesController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (Duration: 1.1ms | Allocations: 863)
+  Rendered articles/new.html.erb within layouts/application (Duration: 1.3ms | Allocations: 951)
+  Rendered layout layouts/application.html.erb (Duration: 3.5ms | Allocations: 3279)
+Completed 200 OK in 5ms (Views: 4.1ms | ActiveRecord: 0.0ms | Allocations: 3636)
+
+
+Started GET "/articles/new" for ::1 at 2023-05-23 18:10:43 +0530
+Processing by ArticlesController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (Duration: 3.4ms | Allocations: 757)
+  Rendered articles/new.html.erb within layouts/application (Duration: 4.1ms | Allocations: 842)
+  Rendered layout layouts/application.html.erb (Duration: 12.5ms | Allocations: 3169)
+Completed 200 OK in 15ms (Views: 13.9ms | ActiveRecord: 0.0ms | Allocations: 3485)
+
+
+Started GET "/articles/new" for ::1 at 2023-05-23 18:10:48 +0530
+Processing by ArticlesController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (Duration: 0.8ms | Allocations: 751)
+  Rendered articles/new.html.erb within layouts/application (Duration: 1.1ms | Allocations: 836)
+  Rendered layout layouts/application.html.erb (Duration: 2.9ms | Allocations: 3162)
+Completed 200 OK in 4ms (Views: 3.2ms | ActiveRecord: 0.0ms | Allocations: 3468)
+
+
+Started GET "/articles" for ::1 at 2023-05-23 18:10:49 +0530
+Processing by ArticlesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (0.1ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/articles/index.html.erb:6
+  Rendered articles/_article.html.erb (Duration: 0.1ms | Allocations: 21)
+  Rendered articles/index.html.erb within layouts/application (Duration: 1.4ms | Allocations: 917)
+  Rendered layout layouts/application.html.erb (Duration: 3.4ms | Allocations: 3256)
+Completed 200 OK in 4ms (Views: 3.6ms | ActiveRecord: 0.1ms | Allocations: 3565)
+
+
+Started GET "/articles" for ::1 at 2023-05-23 18:10:51 +0530
+Processing by ArticlesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (0.1ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/articles/index.html.erb:6
+  Rendered articles/_article.html.erb (Duration: 0.1ms | Allocations: 21)
+  Rendered articles/index.html.erb within layouts/application (Duration: 1.0ms | Allocations: 861)
+  Rendered layout layouts/application.html.erb (Duration: 2.8ms | Allocations: 3201)
+Completed 200 OK in 3ms (Views: 3.0ms | ActiveRecord: 0.1ms | Allocations: 3514)
+
+
+Started GET "/articles/new" for ::1 at 2023-05-23 18:10:55 +0530
+Processing by ArticlesController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (Duration: 0.8ms | Allocations: 756)
+  Rendered articles/new.html.erb within layouts/application (Duration: 1.0ms | Allocations: 841)
+  Rendered layout layouts/application.html.erb (Duration: 2.7ms | Allocations: 3167)
+Completed 200 OK in 3ms (Views: 3.1ms | ActiveRecord: 0.0ms | Allocations: 3475)
+
+
+Started GET "/articles" for ::1 at 2023-05-23 18:11:16 +0530
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ArticlesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (0.1ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/articles/index.html.erb:6
+  Rendered articles/_article.html.erb (Duration: 0.3ms | Allocations: 267)
+  Rendered articles/index.html.erb within layouts/application (Duration: 9.4ms | Allocations: 18027)
+  Rendered layout layouts/application.html.erb (Duration: 30.4ms | Allocations: 39276)
+Completed 200 OK in 36ms (Views: 31.6ms | ActiveRecord: 0.4ms | Allocations: 46051)
+
+
+Started GET "/articles/new" for ::1 at 2023-05-23 18:11:18 +0530
+Processing by ArticlesController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (Duration: 3.3ms | Allocations: 3505)
+  Rendered articles/new.html.erb within layouts/application (Duration: 4.0ms | Allocations: 3870)
+  Rendered layout layouts/application.html.erb (Duration: 5.8ms | Allocations: 6312)
+Completed 200 OK in 7ms (Views: 6.2ms | ActiveRecord: 0.0ms | Allocations: 6821)
+
+
+Started GET "/" for 127.0.0.1 at 2023-05-23 18:11:52 +0530
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/gammastack/.rvm/gems/ruby-3.0.1/gems/railties-7.0.4.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/gammastack/.rvm/gems/ruby-3.0.1/gems/railties-7.0.4.3/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.7ms | Allocations: 825)
+Completed 200 OK in 5ms (Views: 1.9ms | ActiveRecord: 0.0ms | Allocations: 6633)
+
+
+Started GET "/articles" for 127.0.0.1 at 2023-05-23 18:11:58 +0530
+Processing by ArticlesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (0.1ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/articles/index.html.erb:6
+  Rendered articles/_article.html.erb (Duration: 0.3ms | Allocations: 258)
+  Rendered articles/index.html.erb within layouts/application (Duration: 10.9ms | Allocations: 17747)
+  Rendered layout layouts/application.html.erb (Duration: 33.7ms | Allocations: 38856)
+Completed 200 OK in 37ms (Views: 34.4ms | ActiveRecord: 0.4ms | Allocations: 40911)
+
+
+Started GET "/articles/new" for 127.0.0.1 at 2023-05-23 18:12:03 +0530
+Processing by ArticlesController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (Duration: 3.1ms | Allocations: 3557)
+  Rendered articles/new.html.erb within layouts/application (Duration: 3.7ms | Allocations: 3898)
+  Rendered layout layouts/application.html.erb (Duration: 5.5ms | Allocations: 6340)
+Completed 200 OK in 6ms (Views: 5.8ms | ActiveRecord: 0.0ms | Allocations: 6810)
+
+
+Started GET "/" for 127.0.0.1 at 2023-05-23 18:12:32 +0530
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/gammastack/.rvm/gems/ruby-3.0.1/gems/railties-7.0.4.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/gammastack/.rvm/gems/ruby-3.0.1/gems/railties-7.0.4.3/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.6ms | Allocations: 825)
+Completed 200 OK in 5ms (Views: 1.8ms | ActiveRecord: 0.0ms | Allocations: 6633)
+
+
+Started GET "/articles" for 127.0.0.1 at 2023-05-23 18:12:39 +0530
+Processing by ArticlesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (0.1ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/articles/index.html.erb:6
+  Rendered articles/_article.html.erb (Duration: 0.4ms | Allocations: 258)
+  Rendered articles/index.html.erb within layouts/application (Duration: 12.5ms | Allocations: 17739)
+  Rendered layout layouts/application.html.erb (Duration: 37.9ms | Allocations: 38953)
+Completed 200 OK in 41ms (Views: 38.5ms | ActiveRecord: 0.5ms | Allocations: 41008)
+
+
+Started GET "/articles/new" for 127.0.0.1 at 2023-05-23 18:12:45 +0530
+Processing by ArticlesController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (Duration: 3.4ms | Allocations: 3545)
+  Rendered articles/new.html.erb within layouts/application (Duration: 4.2ms | Allocations: 3886)
+  Rendered layout layouts/application.html.erb (Duration: 6.5ms | Allocations: 6328)
+Completed 200 OK in 7ms (Views: 6.8ms | ActiveRecord: 0.0ms | Allocations: 6798)
+
+
+Started GET "/articles/new" for 127.0.0.1 at 2023-05-23 18:13:22 +0530
+Processing by ArticlesController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (Duration: 0.8ms | Allocations: 824)
+  Rendered articles/new.html.erb within layouts/application (Duration: 1.0ms | Allocations: 913)
+  Rendered layout layouts/application.html.erb (Duration: 2.7ms | Allocations: 3240)
+Completed 200 OK in 3ms (Views: 3.0ms | ActiveRecord: 0.0ms | Allocations: 3590)
+
+
+Started GET "/articles/new" for 127.0.0.1 at 2023-05-23 18:13:54 +0530
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ArticlesController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (Duration: 4.9ms | Allocations: 3848)
+  Rendered articles/new.html.erb within layouts/application (Duration: 5.9ms | Allocations: 4602)
+  Rendered layout layouts/application.html.erb (Duration: 28.2ms | Allocations: 25738)
+Completed 200 OK in 39ms (Views: 29.7ms | ActiveRecord: 0.3ms | Allocations: 47799)
+
+
+Started GET "/articles" for 127.0.0.1 at 2023-05-23 18:13:56 +0530
+Processing by ArticlesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (0.1ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/articles/index.html.erb:6
+  Rendered articles/_article.html.erb (Duration: 0.4ms | Allocations: 244)
+  Rendered articles/index.html.erb within layouts/application (Duration: 2.9ms | Allocations: 2103)
+  Rendered layout layouts/application.html.erb (Duration: 5.0ms | Allocations: 4565)
+Completed 200 OK in 6ms (Views: 5.4ms | ActiveRecord: 0.1ms | Allocations: 5124)
+
+
+Started GET "/articles/new" for 127.0.0.1 at 2023-05-23 18:14:01 +0530
+Processing by ArticlesController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (Duration: 1.0ms | Allocations: 916)
+  Rendered articles/new.html.erb within layouts/application (Duration: 1.2ms | Allocations: 1004)
+  Rendered layout layouts/application.html.erb (Duration: 3.3ms | Allocations: 3332)
+Completed 200 OK in 4ms (Views: 3.7ms | ActiveRecord: 0.0ms | Allocations: 3689)
+
+
+Started GET "/articles" for 127.0.0.1 at 2023-05-23 18:14:34 +0530
+Processing by ArticlesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (0.1ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/articles/index.html.erb:6
+  Rendered articles/_article.html.erb (Duration: 0.1ms | Allocations: 21)
+  Rendered articles/index.html.erb within layouts/application (Duration: 1.1ms | Allocations: 958)
+  Rendered layout layouts/application.html.erb (Duration: 2.9ms | Allocations: 3298)
+Completed 200 OK in 3ms (Views: 3.2ms | ActiveRecord: 0.1ms | Allocations: 3615)
+
+
+Started GET "/articles/new" for 127.0.0.1 at 2023-05-23 18:14:38 +0530
+Processing by ArticlesController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (Duration: 0.9ms | Allocations: 796)
+  Rendered articles/new.html.erb within layouts/application (Duration: 1.1ms | Allocations: 881)
+  Rendered layout layouts/application.html.erb (Duration: 3.0ms | Allocations: 3208)
+Completed 200 OK in 4ms (Views: 3.4ms | ActiveRecord: 0.0ms | Allocations: 3524)
+
+
+Started GET "/" for ::1 at 2023-05-23 18:15:22 +0530
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/gammastack/.rvm/gems/ruby-3.0.1/gems/railties-7.0.4.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/gammastack/.rvm/gems/ruby-3.0.1/gems/railties-7.0.4.3/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.7ms | Allocations: 825)
+Completed 200 OK in 6ms (Views: 2.2ms | ActiveRecord: 0.0ms | Allocations: 6633)
+
+
+Started GET "/articles" for ::1 at 2023-05-23 18:15:27 +0530
+Processing by ArticlesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (0.1ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/articles/index.html.erb:6
+  Rendered articles/_article.html.erb (Duration: 0.3ms | Allocations: 258)
+  Rendered articles/index.html.erb within layouts/application (Duration: 10.4ms | Allocations: 17687)
+  Rendered layout layouts/application.html.erb (Duration: 33.9ms | Allocations: 38655)
+Completed 200 OK in 37ms (Views: 34.8ms | ActiveRecord: 0.4ms | Allocations: 40710)
+
+
+Started GET "/articles/new" for ::1 at 2023-05-23 18:15:31 +0530
+Processing by ArticlesController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (Duration: 4.0ms | Allocations: 3490)
+  Rendered articles/new.html.erb within layouts/application (Duration: 4.9ms | Allocations: 3831)
+  Rendered layout layouts/application.html.erb (Duration: 7.1ms | Allocations: 6273)
+Completed 200 OK in 8ms (Views: 7.5ms | ActiveRecord: 0.0ms | Allocations: 6743)
+
+
+Started GET "/articles/new" for ::1 at 2023-05-23 18:16:02 +0530
+Processing by ArticlesController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (Duration: 0.9ms | Allocations: 779)
+  Rendered articles/new.html.erb within layouts/application (Duration: 1.2ms | Allocations: 868)
+  Rendered layout layouts/application.html.erb (Duration: 3.4ms | Allocations: 3196)
+Completed 200 OK in 4ms (Views: 3.9ms | ActiveRecord: 0.0ms | Allocations: 3558)
+
+
+Started GET "/articles/new" for ::1 at 2023-05-23 18:16:29 +0530
+Processing by ArticlesController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (Duration: 0.8ms | Allocations: 757)
+  Rendered articles/new.html.erb within layouts/application (Duration: 0.9ms | Allocations: 842)
+  Rendered layout layouts/application.html.erb (Duration: 2.6ms | Allocations: 3168)
+Completed 200 OK in 3ms (Views: 2.9ms | ActiveRecord: 0.0ms | Allocations: 3474)
+
+
+Started GET "/articles/new" for ::1 at 2023-05-23 18:16:44 +0530
+Processing by ArticlesController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (Duration: 1.1ms | Allocations: 677)
+  Rendered articles/new.html.erb within layouts/application (Duration: 1.4ms | Allocations: 762)
+  Rendered layout layouts/application.html.erb (Duration: 3.5ms | Allocations: 3089)
+Completed 200 OK in 4ms (Views: 4.0ms | ActiveRecord: 0.0ms | Allocations: 3403)
+
+
+Started GET "/" for ::1 at 2023-05-23 18:17:07 +0530
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/gammastack/.rvm/gems/ruby-3.0.1/gems/railties-7.0.4.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/gammastack/.rvm/gems/ruby-3.0.1/gems/railties-7.0.4.3/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.9ms | Allocations: 485)
+Completed 200 OK in 3ms (Views: 2.0ms | ActiveRecord: 0.0ms | Allocations: 1351)
+
+
+Started GET "/articles" for ::1 at 2023-05-23 18:17:14 +0530
+Processing by ArticlesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (0.1ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/articles/index.html.erb:6
+  Rendered articles/_article.html.erb (Duration: 0.1ms | Allocations: 31)
+  Rendered articles/index.html.erb within layouts/application (Duration: 1.3ms | Allocations: 1013)
+  Rendered layout layouts/application.html.erb (Duration: 3.5ms | Allocations: 3526)
+Completed 200 OK in 4ms (Views: 3.8ms | ActiveRecord: 0.1ms | Allocations: 3856)
+
+
+Started GET "/articles/new" for ::1 at 2023-05-23 18:17:18 +0530
+Processing by ArticlesController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (Duration: 1.0ms | Allocations: 921)
+  Rendered articles/new.html.erb within layouts/application (Duration: 1.2ms | Allocations: 1007)
+  Rendered layout layouts/application.html.erb (Duration: 3.2ms | Allocations: 3333)
+Completed 200 OK in 4ms (Views: 3.6ms | ActiveRecord: 0.0ms | Allocations: 3648)
+
+
+Started GET "/" for 127.0.0.1 at 2023-05-23 18:17:59 +0530
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/gammastack/.rvm/gems/ruby-3.0.1/gems/railties-7.0.4.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/gammastack/.rvm/gems/ruby-3.0.1/gems/railties-7.0.4.3/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.7ms | Allocations: 825)
+Completed 200 OK in 5ms (Views: 2.0ms | ActiveRecord: 0.0ms | Allocations: 6633)
+
+
+Started GET "/articles" for 127.0.0.1 at 2023-05-23 18:18:04 +0530
+Processing by ArticlesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (0.1ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/articles/index.html.erb:6
+  Rendered articles/_article.html.erb (Duration: 0.5ms | Allocations: 260)
+  Rendered articles/index.html.erb within layouts/application (Duration: 11.3ms | Allocations: 17562)
+  Rendered layout layouts/application.html.erb (Duration: 215.9ms | Allocations: 57684)
+Completed 200 OK in 218ms (Views: 216.6ms | ActiveRecord: 0.4ms | Allocations: 59739)
+
+
+Started GET "/articles/new" for 127.0.0.1 at 2023-05-23 18:18:10 +0530
+Processing by ArticlesController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (Duration: 6.5ms | Allocations: 3517)
+  Rendered articles/new.html.erb within layouts/application (Duration: 7.6ms | Allocations: 3858)
+  Rendered layout layouts/application.html.erb (Duration: 11.8ms | Allocations: 6300)
+Completed 200 OK in 13ms (Views: 12.4ms | ActiveRecord: 0.0ms | Allocations: 6770)
+
+
+Started GET "/" for 127.0.0.1 at 2023-05-24 10:56:58 +0530
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/gammastack/.rvm/gems/ruby-3.0.1/gems/railties-7.0.4.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/gammastack/.rvm/gems/ruby-3.0.1/gems/railties-7.0.4.3/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.9ms | Allocations: 825)
+Completed 200 OK in 7ms (Views: 3.0ms | ActiveRecord: 0.0ms | Allocations: 6633)
+
+
+Started GET "/articles/" for 127.0.0.1 at 2023-05-24 10:57:07 +0530
+Processing by ArticlesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (0.2ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/articles/index.html.erb:6
+  Rendered articles/_article.html.erb (Duration: 0.6ms | Allocations: 260)
+  Rendered articles/index.html.erb within layouts/application (Duration: 10.6ms | Allocations: 17562)
+  Rendered layout layouts/application.html.erb (Duration: 37.5ms | Allocations: 38455)
+Completed 200 OK in 41ms (Views: 38.2ms | ActiveRecord: 0.5ms | Allocations: 40510)
+
+
+Started GET "/articles/new" for 127.0.0.1 at 2023-05-24 10:57:11 +0530
+Processing by ArticlesController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (Duration: 16.7ms | Allocations: 3509)
+  Rendered articles/new.html.erb within layouts/application (Duration: 19.2ms | Allocations: 3850)
+  Rendered layout layouts/application.html.erb (Duration: 24.5ms | Allocations: 6292)
+Completed 200 OK in 27ms (Views: 25.6ms | ActiveRecord: 0.0ms | Allocations: 6762)
+
+
